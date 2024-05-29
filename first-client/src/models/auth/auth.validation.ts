@@ -4,12 +4,20 @@ import { z } from "zod";
  * Register user schema
  */
 export const registerUserSchema = z.object({
-  name: z
-    .string({ required_error: "Name is required!" })
+  first_name: z
+    .string({ required_error: "last name is required!" })
     .min(3, "Name should contain at least 3 characters!"),
+  last_name: z
+    .string({ required_error: "first name is required!" })
+    .min(3, "Name should contain at least 3 characters!"),
+  birthday: z.string({ required_error: "birthday is required!" }),
+  phone: z.string({ required_error: "phone is required!" }),
   email: z
     .string({ required_error: "Email is required!" })
     .email({ message: "Invalid email!" }),
+  adress: z
+    .string({ required_error: "address is required!" })
+    .min(3, "Name should contain at least 3 characters!"),
   password: z
     .string({ required_error: "Password is required!" })
     .min(8, "Password should contain at least 8 characters!"),
