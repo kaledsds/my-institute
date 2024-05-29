@@ -18,11 +18,9 @@ return new class extends Migration
             $table->string('birthday');
             $table->string('adress');
             $table->string('email');
-            $table->string('specialite_id');
-            $table->string('groupe_id');
+            $table->unsignedBigInteger('specialite_id');
+            $table->unsignedBigInteger('groupe_id');
             $table->string('phone');
-            //$table->enum('niveau', ['1 CAP', '2 CAP', '1 BTP', '2 BTP', '1 BTS', '2 BTS']);
-            $table->foreign("specialite_id")->references("id")->on("specialites")->onDelete("cascade");
             $table->foreign("groupe_id")->references("id")->on("groupes")->onDelete("cascade");
             $table->timestamps();
         });

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nom');
             $table->enum('niveau', ['1 CAP', '2 CAP', '1 BTP', '2 BTP', '1 BTS', '2 BTS']);
-            $table->string('specialite_id');
+            $table->unsignedBigInteger('specialite_id');
             $table->foreign("specialite_id")->references("id")->on("specialites")->onDelete("cascade");
             $table->timestamps();
         });
