@@ -1,8 +1,8 @@
 import { StudentModel } from "./student.types";
 import { _delete, _get, _post, _put } from "../../api/api.client";
 import {
-  CreatePostSchemaType,
-  UpdatePostSchemaType,
+  CreateStudentSchemaType,
+  UpdateStudentSchemaType,
 } from "./student.validation";
 
 /**
@@ -25,13 +25,13 @@ export function getPostById(studentId: string) {
 /**
  * Create resource
  */
-export function createPost(data: CreatePostSchemaType) {
+export function createPost(data: CreateStudentSchemaType) {
   return _post<StudentModel>("/api/students", data);
 }
 /**
  * Update resource
  */
-export function updatePost(studentId: string, data: UpdatePostSchemaType) {
+export function updatePost(studentId: string, data: UpdateStudentSchemaType) {
   return _put<StudentModel>(`/api/students/${studentId}`, data);
 }
 /**

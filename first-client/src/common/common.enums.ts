@@ -1,5 +1,5 @@
 export enum categoryEnum {
   ADMIN = "admin",
-  PERSONNEL = "personnel",
+  PERSONNAL = "personnal",
   PROFESSEUR = "professeur",
 }
