@@ -23,8 +23,8 @@ class StoreGroupe extends FormRequest
     {
         return [
             'nom' => ['required', 'string', 'max:255'],
-            'niveau' => ['required', 'string', 'max:255'],
-            'specialite_id' => ['required', 'integer'],
+            'niveau' => ['required|in:1 CAP,2 CAP,1 BTP,2 BTP,1 BTS,2 BTS'],
+            'specialite_id' => ['required', 'exists:specialites,id'],
         ];
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Groupe;
+namespace App\Http\Requests\Matiere;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateGroupe extends FormRequest
+class StoreMatiere extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,8 +23,6 @@ class UpdateGroupe extends FormRequest
     {
         return [
             'nom' => ['required', 'string', 'max:255'],
-            'niveau' => ['required|in:1 CAP,2 CAP,1 BTP,2 BTP,1 BTS,2 BTS'],
-            'specialite_id' => ['required', 'exists:specialites,id'],
         ];
     }
 }

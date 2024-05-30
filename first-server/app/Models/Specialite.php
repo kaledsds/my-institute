@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Specialite extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['nom'];
+
+    public function groupes()
+    {
+        return $this->hasMany(Groupe::class);
+    }
 }

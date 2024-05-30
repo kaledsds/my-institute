@@ -27,8 +27,8 @@ class UpdateStudent extends FormRequest
             'birthday' => ['required', 'string'],
             'adress' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'specialite_id' => ['required', 'integer'],
-            'groupe_id' => ['required', 'integer'],
+            'specialite_id' => ['required', 'exists:specialites,id'],
+            'groupe_id' => ['required', 'exists:groupes,id'],
             'phone' => ['required', 'string', 'max:255'],
         ];
     }
