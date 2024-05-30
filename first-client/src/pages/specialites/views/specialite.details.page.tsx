@@ -1,11 +1,11 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  GET_POST_KEY,
-  deletePost,
-  getPostById,
-} from "../../../models/posts/post.service";
 import { Button, Link, LoadingPage, Spinner } from "../../../components/ui";
+import {
+  GET_SPECIALITE_KEY,
+  deleteSpecialite,
+  getSpecialitetById,
+} from "../../../models/specialites/specialite.service";
 
 export const SpecialiteDetailsPage = () => {
   const { id } = useParams();
@@ -13,19 +13,19 @@ export const SpecialiteDetailsPage = () => {
   /**
    * Api Mutations
    */
-  const deletePostMutation = useMutation({
-    mutationFn: () => deletePost(id!),
+  const deleteSpecialiteMutation = useMutation({
+    mutationFn: () => deleteSpecialite(id!),
     onSuccess: () => {
-      navigate("/posts");
+      navigate("/specialites");
     },
   });
 
   /**
    * Api Queries
    */
-  const { data: post, status } = useQuery({
-    queryKey: [GET_POST_KEY],
-    queryFn: () => getPostById(id!),
+  const { data: specialite, status } = useQuery({
+    queryKey: [GET_SPECIALITE_KEY],
+    queryFn: () => getSpecialitetById(id!),
   });
 
   if (status === "pending") {
@@ -36,19 +36,17 @@ export const SpecialiteDetailsPage = () => {
     <div className="p-4">
       <div className="card w-full bg-base-100 shadow-xl">
         <div className="card-body">
-          <h2 className="card-title">{post?.data.title}</h2>
-          <p>{post?.data.content}</p>
-          <h2 className="text-xs font-bold">{post?.data.author.first_name}</h2>
+          <h2 className="card-title">{specialite?.data.nom}</h2>
         </div>
         <div className="card-actions justify-end p-4">
-          <Link to={`/posts/edit/${post?.data.id}`} paint="primary">
+          <Link to={`/specialites/edit/${specialite?.data.id}`} paint="primary">
             Edit
           </Link>
           <Button
-            onClick={() => deletePostMutation.mutate()}
-            disabled={deletePostMutation.isPending}
+            onClick={() => deleteSpecialiteMutation.mutate()}
+            disabled={deleteSpecialiteMutation.isPending}
           >
-            {deletePostMutation.isPending && <Spinner size="xs" />}
+            {deleteSpecialiteMutation.isPending && <Spinner size="xs" />}
             <span>Delete</span>
           </Button>
         </div>

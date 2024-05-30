@@ -31,11 +31,6 @@ export const SpecialiteListPage = () => {
         </Link>
       </div>
       <DataTable data={specialites?.data} columns={SpecialiteColumns} />
-      {/* <div className="grid grid-cols-3 gap-4">
-        {posts?.data.map((post) => (
-          <PostCard key={post.id} post={post} />
-        ))}
-      </div> */}
     </div>
   );
 };

@@ -1,51 +1,55 @@
 import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
-import {
-  UpdatePostSchemaType,
-  updatePostSchema,
-} from "../../../models/posts/post.validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { queryClient } from "../../../api/query.client";
-import { GET_POSTS_KEY, updatePost } from "../../../models/posts/post.service";
 import { Button, Spinner } from "../../../components/ui";
-import { PostModel } from "../../../models/posts/post.types";
 import { useNavigate } from "react-router-dom";
+import { SpecialiteModel } from "../../../models/specialites/specialite.types";
+import {
+  UpdateSpecialiteSchemaType,
+  updateSpecialiteSchema,
+} from "../../../models/specialites/specialite.validation";
+import {
+  GET_SPECIALITE_KEY,
+  updateSpecialite,
+} from "../../../models/specialites/specialite.service";
 
 interface SpecialiteUpdateFormProps {
-  post: PostModel;
+  specialite: SpecialiteModel;
 }
 
 export const SpecialiteUpdateForm: React.FC<SpecialiteUpdateFormProps> = ({
-  post,
+  specialite,
 }) => {
   const navigate = useNavigate();
 
   /**
    * Api Mutations
    */
-  const postMutation = useMutation({
-    mutationFn: (data: UpdatePostSchemaType) => updatePost(post.id, data),
+  const specialiteMutation = useMutation({
+    mutationFn: (data: UpdateSpecialiteSchemaType) =>
+      updateSpecialite(specialite.id, data),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: [GET_POSTS_KEY],
+        queryKey: [GET_SPECIALITE_KEY],
       });
-      navigate(`/posts/details/${post.id}`);
+      navigate(`/specialites/details/${specialite.id}`);
     },
   });
   /**
    * Form hook
    */
-  const { handleSubmit, register, formState } = useForm<UpdatePostSchemaType>({
-    resolver: zodResolver(updatePostSchema),
-    defaultValues: {
-      title: post.title,
-      content: post.content,
-    },
-  });
+  const { handleSubmit, register, formState } =
+    useForm<UpdateSpecialiteSchemaType>({
+      resolver: zodResolver(updateSpecialiteSchema),
+      defaultValues: {
+        nom: specialite.nom,
+      },
+    });
 
   return (
     <form
-      onSubmit={handleSubmit((data) => postMutation.mutate(data))}
+      onSubmit={handleSubmit((data) => specialiteMutation.mutate(data))}
       className="space-y-4"
     >
       {/* Name */}
@@ -56,30 +60,14 @@ export const SpecialiteUpdateForm: React.FC<SpecialiteUpdateFormProps> = ({
               type="text"
               className="w-full input-sm"
               placeholder="Name"
-              {...register("title")}
+              {...register("nom")}
             />
           </label>
         </div>
         <div className="label">
           <span className="label-text"></span>
           <span className="label-text-alt text-error">
-            {formState?.errors?.title?.message || ""}
-          </span>
-        </div>
-      </label>
-      {/* Content */}
-      <label className="form-control w-full">
-        <div className="flex items-center justify-between space-x-8">
-          <textarea
-            className="w-full textarea textarea-bordered textarea-sm"
-            placeholder="Content"
-            {...register("content")}
-          />
-        </div>
-        <div className="label">
-          <span className="label-text"></span>
-          <span className="label-text-alt text-error">
-            {formState?.errors?.content?.message || ""}
+            {formState?.errors?.nom?.message || ""}
           </span>
         </div>
       </label>
@@ -90,9 +78,9 @@ export const SpecialiteUpdateForm: React.FC<SpecialiteUpdateFormProps> = ({
           size="sm"
           paint="primary"
           className="btn btn-sm btn-primary"
-          disabled={postMutation.isPending}
+          disabled={specialiteMutation.isPending}
         >
-          {postMutation.isPending && <Spinner size="xs" />}
+          {specialiteMutation.isPending && <Spinner size="xs" />}
           <span>Submit</span>
         </Button>
       </div>
