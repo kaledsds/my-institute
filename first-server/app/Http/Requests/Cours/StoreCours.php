@@ -24,7 +24,7 @@ class StoreCours extends FormRequest
         return [
             'type' => ['required', 'enum'],
             'nom' => ['required', 'string', 'max:255'],
-            'matiere_id' => ['required', 'integer'],
+            'matiere_id' => ['required', 'exists:matieres,id'],
 
         ];
     }
