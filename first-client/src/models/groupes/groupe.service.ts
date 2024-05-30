@@ -13,30 +13,30 @@ export const GET_GROUPE_KEY = "GET_GROUPE_KEY";
 /**
  * Get all resources
  */
-export function getPosts() {
+export function getGroupes() {
   return _get<GroupeModel[]>("/api/groupes");
 }
 /**
  * Get resources by id
  */
-export function getPostById(studentId: string) {
+export function getGroupeById(studentId: string) {
   return _get<GroupeModel>(`/api/groupes/${studentId}`);
 }
 /**
  * Create resource
  */
-export function createPost(data: CreateGroupeSchemaType) {
+export function createGroupe(data: CreateGroupeSchemaType) {
   return _post<GroupeModel>("/api/groupes", data);
 }
 /**
  * Update resource
  */
-export function updatePost(studentId: string, data: UpdateGroupeSchemaType) {
+export function updateGroupe(studentId: string, data: UpdateGroupeSchemaType) {
   return _put<GroupeModel>(`/api/groupes/${studentId}`, data);
 }
 /**
  * Delete resource
  */
-export function deletePost(studentId: string) {
+export function deleteGroupe(studentId: string) {
   return _delete(`/api/groupes/${studentId}`);
 }

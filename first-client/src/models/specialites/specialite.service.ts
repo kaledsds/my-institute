@@ -16,6 +16,7 @@ export const GET_SPECIALITE_KEY = "GET_SPECIALITE_KEY";
 export function getSpecialites() {
   return _get<SpecialiteModel[]>("/api/specialites");
 }
+
 /**
  * Get resources by id
  */

@@ -3,7 +3,7 @@ import { GET_POSTS_KEY, getPosts } from "../../../models/posts/post.service";
 import { Link, LoadingPage } from "../../../components/ui";
 import { Plus } from "lucide-react";
 import { DataTable } from "../../../components/blocs/data-table/data-table";
-import { GroupeColumns } from "../components/student.columns";
+import { GroupeColumns } from "../components/groupe.columns";
 
 export const GroupeListPage = () => {
   /**

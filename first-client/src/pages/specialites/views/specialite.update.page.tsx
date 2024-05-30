@@ -29,7 +29,7 @@ export const SpecialiteUpdatePage = () => {
   return (
     <div className="p-4 space-y-4">
       <div>
-        <h1 className="text-2xl font-bold">Create new post</h1>
+        <h1 className="text-2xl font-bold">Update Specialite</h1>
       </div>
       <SpecialiteUpdateForm specialite={specialite.data} />
     </div>

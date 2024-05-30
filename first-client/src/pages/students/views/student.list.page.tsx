@@ -21,7 +21,7 @@ export const StudentListPage = () => {
   return (
     <div className="p-4 space-y-4">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Post list</h1>
+        <h1 className="text-2xl font-bold">Student list</h1>
         <Link to="/students/create" paint="primary">
           <Plus className="w-4 h-4" />
           <span>New</span>

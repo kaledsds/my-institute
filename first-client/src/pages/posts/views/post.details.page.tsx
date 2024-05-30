@@ -38,7 +38,7 @@ export const PostDetailsPage = () => {
         <div className="card-body">
           <h2 className="card-title">{post?.data.title}</h2>
           <p>{post?.data.content}</p>
-          <h2 className="text-xs font-bold">{post?.data.author.name}</h2>
+          <h2 className="text-xs font-bold">{post?.data.author.first_name}</h2>
         </div>
         <div className="card-actions justify-end p-4">
           <Link to={`/posts/edit/${post?.data.id}`} paint="primary">

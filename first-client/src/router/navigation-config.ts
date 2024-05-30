@@ -19,22 +19,22 @@ export const navigationConfig: NavigationConfig[] = [
     path: "/",
     icon: Home,
   },
-  // {
-  //   id: "posts",
-  //   name: "Posts",
-  //   path: "/posts",
-  //   icon: NotebookPen,
-  //   allowedCategories: [categoryEnum.PERSONNAL, categoryEnum.ADMIN],
-  //   subItems: [
-  //     {
-  //       id: "sub_posts",
-  //       name: "Sub posts",
-  //       path: "/posts",
-  //       icon: NotebookPen,
-  //       allowedCategories: [categoryEnum.PERSONNAL, categoryEnum.ADMIN],
-  //     },
-  //   ],
-  // },
+  {
+    id: "posts",
+    name: "Posts",
+    path: "/posts",
+    icon: NotebookPen,
+    allowedCategories: [categoryEnum.PERSONNAL, categoryEnum.ADMIN],
+    subItems: [
+      {
+        id: "sub_posts",
+        name: "Sub posts",
+        path: "/posts",
+        icon: NotebookPen,
+        allowedCategories: [categoryEnum.PERSONNAL, categoryEnum.ADMIN],
+      },
+    ],
+  },
   {
     id: "students",
     name: "List students",
@@ -55,5 +55,11 @@ export const navigationConfig: NavigationConfig[] = [
     path: "/groupes",
     icon: NotebookPen,
     allowedCategories: [categoryEnum.PERSONNAL],
+  },
+  {
+    id: "groupes",
+    name: "List groupes",
+    path: "/groupes",
+    icon: NotebookPen,
   },
 ];
