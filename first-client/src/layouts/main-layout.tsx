@@ -1,18 +1,9 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { Navbar } from "../components/blocs/navbar/navbar";
 import { AuthGuard } from "./auth-guard";
 import { Sidebar } from "../components/blocs/sidebar/sidebar";
-import { useAuth } from "../models/auth/hooks";
 
 export const MainLayout = () => {
-  const { currentUser } = useAuth();
-  if (currentUser?.category === "professeur") {
-    return <Navigate to="/professeur" />;
-  } else if (currentUser?.category === "personnel") {
-    return <Navigate to="/personnel" />;
-  } else if (currentUser?.category === "admin") {
-    return <Navigate to="/admin" />;
-  }
   return (
     <AuthGuard>
       <main className="flex">

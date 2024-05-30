@@ -1,5 +1,7 @@
 import { cn } from "../../../common/utils/cn";
+import { navigationConfig } from "../../../router/navigation-config";
 import { Link } from "../../ui";
+import { Navigation } from "./components";
 import { useSideBarStore } from "./sidebar.store";
 
 export const Sidebar = () => {
@@ -11,7 +13,6 @@ export const Sidebar = () => {
         isOpenSideBar ? "w-[13vw]" : "w-0"
       )}
     >
-      {/* sidebar appearing animation */}
       <div
         className={cn(
           "w-full p-2 transition-all delay-300",
@@ -22,6 +23,8 @@ export const Sidebar = () => {
         <Link to="/" paint="ghost" size="md" className="text-lg w-full">
           KDAPP
         </Link>
+        {/* Navigation */}
+        <Navigation navItems={navigationConfig} />
       </div>
     </aside>
   );

@@ -1,4 +1,5 @@
 import { Home, LucideIcon, NotebookPen } from "lucide-react";
+import { categoryEnum } from "../common/common.enums";
 
 /**
  * Navigation configuration
@@ -6,10 +7,12 @@ import { Home, LucideIcon, NotebookPen } from "lucide-react";
 export interface NavigationConfig {
   id: string;
   name: string;
-  path: string;
+  path?: string;
   icon?: LucideIcon;
+  allowedCategories?: categoryEnum[];
+  subItems?: NavigationConfig[];
 }
-export const navigationConfig = [
+export const navigationConfig: NavigationConfig[] = [
   {
     id: "home",
     name: "Home",
@@ -21,5 +24,15 @@ export const navigationConfig = [
     name: "Posts",
     path: "/posts",
     icon: NotebookPen,
+    allowedCategories: [categoryEnum.PERSONNEL, categoryEnum.ADMIN],
+    subItems: [
+      {
+        id: "sub_posts",
+        name: "Sub posts",
+        path: "/posts",
+        icon: NotebookPen,
+        allowedCategories: [categoryEnum.PERSONNEL, categoryEnum.ADMIN],
+      },
+    ],
   },
 ];
